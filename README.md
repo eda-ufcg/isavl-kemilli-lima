@@ -1,8 +1,8 @@
 # Identificação
 
-* Nome: 
-* Email (@ccc): 
-* Matrícula: 
+* Nome: Kemilli Nicole dos Santos Lima
+* Email (@ccc): kemilli.nicole.santos.lima@ccc.ufcg.edu.br
+* Matrícula: 123110823
 
 # Roteiro: isAVL
 

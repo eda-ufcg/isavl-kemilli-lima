@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -8,16 +8,23 @@ public class BST {
     private int size;
 
     public boolean isAVL() {
-        //TODO: implementar
-        return false;
+        if (isEmpty()) return true;
+        return isAVL(this.root);
+    }
+
+    private boolean isAVL(Node node){
+        if (node == null) return true;
+        int balance = balance(node);
+        if (Math.abs(balance) > 1) return false;  
+        return isAVL(node.left) && isAVL(node.right); 
     }
 
     /**
      * Retorna a altura da árvore.
      */
     public int height() {
-        //TODO implementar
-        return -1;
+        if (isEmpty()) return -1;
+        return height(this.root);
     }
 
     /**
@@ -25,12 +32,15 @@ public class BST {
      * para recursão e para o balance.
      */
     private int height(Node node) {
-        return -1;
+        if (node == null) return -1;
+        return 1 + Math.max(height(node.left), height(node.right));
     }
 
-    private int balance(Node node) {
-        return -1;
+    public int balance(Node node) {
+        if(node == null) return 0;
+        return height(node.left) - height(node.right);
     }
+
 
     /**
      * Busca o nó cujo valor é igual ao passado como parâmetro. Essa é a implementação 
@@ -205,7 +215,6 @@ public class BST {
      * @param element elemento a ser adicionado.
      */
     private void recursiveAdd(Node node, int element) {
-        
         if (element < node.value) {
             if (node.left == null) {
                 Node newNode = new Node(element);
@@ -400,7 +409,7 @@ public class BST {
 
 class Node {
     
-    int value;
+    int value, height;
     Node left;
     Node right;
     Node parent;
